@@ -28,7 +28,6 @@ notsey
 2. Ng CRUD: List, add and remove operations.
 3. Ng Routes: Configuring routes and navigation.
 4. Ng API: Getting data from API.
-5. Ng Context: Component communications.
 
 ## Run Application
 ```
