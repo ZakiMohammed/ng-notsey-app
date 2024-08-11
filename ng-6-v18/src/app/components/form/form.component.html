@@ -1,0 +1,8 @@
+<form>
+  <div class="input-group mb-4">
+    <input type="text" class="form-control" placeholder="Write some notes..." [(ngModel)]="content" name="content" />
+    <button class="btn btn-success" type="submit" title="add" (click)="onAdd($event)">
+      <i class="bi bi-plus-lg fs-5 fw-bolder"></i>
+    </button>
+  </div>
+</form>
