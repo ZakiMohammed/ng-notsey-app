@@ -9,7 +9,6 @@ import { EmptyComponent } from './components/empty/empty.component';
 import { ListComponent } from './components/list/list.component';
 import { ItemComponent } from './components/item/item.component';
 import { FormComponent } from './components/form/form.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule
   ],
   providers: [],
