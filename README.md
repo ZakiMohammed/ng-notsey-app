@@ -9,7 +9,7 @@ ___
 Check out the CodeOmelet blog posts for this project:
 
 - [Angular Journey: Part 1 - Getting Started](https://codeomelet.com/posts/ng-journey-part-1-getting-started)
-- [Angular Journey: Part 2 - Bindings, Components, Services](https://codeomelet.com/posts/ng-journey-part-2-bindings-components-services)
+- [Angular Journey: Part 2 - Bindings, Directives, Components, Services](https://codeomelet.com/posts/ng-journey-part-2-bindings-directives-components-services)
 - [Angular Journey: Part 3 - Angular Routes](https://codeomelet.com/posts/ng-journey-part-3-angular-routes)
 - [Angular Journey: Part 4 - Working with Web API](https://codeomelet.com/posts/ng-journey-part-4-working-with-web-api)
 
