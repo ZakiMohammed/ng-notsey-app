@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../models/note.model';
 import { v4 as uuid } from 'uuid';
 import { LoaderService } from '../../services/loader.service';
-import { finalize } from 'rxjs';
+import { finalize, Subject, takeLast, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
-export class FormComponent {
+export class FormComponent implements OnDestroy {
   content: string = '';
+  private destroy$ = new Subject<void>();
 
   constructor(
     private noteService: NoteService,
     private loaderService: LoaderService
   ) {}
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   onAdd(event: Event) {
     event.preventDefault();
@@ -35,6 +41,7 @@ export class FormComponent {
     this.noteService
       .addNote(newNote)
       .pipe(
+        takeUntil(this.destroy$),
         finalize(() => {
           this.loaderService.hide();
           this.content = '';

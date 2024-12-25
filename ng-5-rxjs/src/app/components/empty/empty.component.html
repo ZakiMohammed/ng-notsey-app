@@ -1,4 +1,4 @@
-<div *ngIf="notes.length === 0" class="text-center p-3 text-muted">
+<div *ngIf="(notes$ | async)?.length === 0" class="text-center p-3 text-muted">
   <h1 class="display-4 text-secondary">
     <i class="bi bi-egg me-2"></i>
   </h1>
