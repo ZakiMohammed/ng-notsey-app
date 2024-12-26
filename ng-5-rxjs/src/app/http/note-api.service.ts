@@ -7,7 +7,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class NoteApiService {
-  notes: Note[] = [];
   apiUrl = environment.apiUrl + 'notes';
 
   constructor(private http: HttpClient) {}
