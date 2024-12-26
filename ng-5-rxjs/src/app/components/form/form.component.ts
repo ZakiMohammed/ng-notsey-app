@@ -2,8 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../models/note.model';
 import { v4 as uuid } from 'uuid';
-import { LoaderService } from '../../services/loader.service';
-import { finalize, Subject, takeLast, takeUntil } from 'rxjs';
+import { finalize, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -14,10 +13,7 @@ export class FormComponent implements OnDestroy {
   content: string = '';
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private noteService: NoteService,
-    private loaderService: LoaderService
-  ) {}
+  constructor(private noteService: NoteService) {}
 
   ngOnDestroy() {
     this.destroy$.next();
@@ -37,15 +33,11 @@ export class FormComponent implements OnDestroy {
       content: this.content,
     };
 
-    this.loaderService.show();
     this.noteService
       .addNote(newNote)
       .pipe(
         takeUntil(this.destroy$),
-        finalize(() => {
-          this.loaderService.hide();
-          this.content = '';
-        })
+        finalize(() => (this.content = ''))
       )
       .subscribe();
   }

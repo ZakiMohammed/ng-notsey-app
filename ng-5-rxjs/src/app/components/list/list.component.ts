@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Note } from '../../models/note.model';
 import { NoteService } from '../../services/note.service';
-import { LoaderService } from '../../services/loader.service';
-import { finalize, Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -12,24 +11,14 @@ import { finalize, Observable, Subject, takeUntil } from 'rxjs';
 export class ListComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private noteService: NoteService,
-    private loaderService: LoaderService
-  ) {}
+  constructor(private noteService: NoteService) {}
 
   get notes$() {
     return this.noteService.notes$;
   }
 
   ngOnInit() {
-    this.loaderService.show();
-    this.noteService
-      .getNotes()
-      .pipe(
-        takeUntil(this.destroy$),
-        finalize(() => this.loaderService.hide())
-      )
-      .subscribe();
+    this.noteService.getNotes().pipe(takeUntil(this.destroy$)).subscribe();
   }
 
   ngOnDestroy() {
@@ -38,13 +27,9 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onRemove(note: Note) {
-    this.loaderService.show();
     this.noteService
       .deleteNoteById(note.id)
-      .pipe(
-        takeUntil(this.destroy$),
-        finalize(() => this.loaderService.hide())
-      )
+      .pipe(takeUntil(this.destroy$))
       .subscribe();
   }
 }
