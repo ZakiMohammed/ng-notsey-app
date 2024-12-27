@@ -4,13 +4,13 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class LoaderService {
-  loaders = signal<string[]>([]);
+  loaders$ = signal<string[]>([]);
   
   show(value: string) {
-    this.loaders.set([...this.loaders(), value]);
+    this.loaders$.set([...this.loaders$(), value]);
   }
 
   hide(value: string) {
-    this.loaders.set(this.loaders().filter((loader) => loader !== value));
+    this.loaders$.set(this.loaders$().filter((loader) => loader !== value));
   }
 }

@@ -40,9 +40,7 @@ export class FormComponent implements OnDestroy {
       .addNote(newNote)
       .pipe(
         takeUntil(this.destroy$),
-        finalize(() => {
-          this.content = '';
-        })
+        finalize(() => (this.content = ''))
       )
       .subscribe();
   }

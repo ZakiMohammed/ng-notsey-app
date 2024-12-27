@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Note } from '../../models/note.model';
 import { NoteService } from '../../services/note.service';
-import { LoaderService } from '../../services/loader.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ItemComponent } from '../item/item.component';
 import { CommonModule } from '@angular/common';
