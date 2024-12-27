@@ -4,9 +4,10 @@ import { Note } from '../../models/note.model';
 import { v4 as uuid } from 'uuid';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+    selector: 'app-form',
+    templateUrl: './form.component.html',
+    styleUrl: './form.component.scss',
+    standalone: false
 })
 export class FormComponent {
   content: string = '';
