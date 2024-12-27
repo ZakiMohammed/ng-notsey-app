@@ -1,20 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoaderService {
-  private _loaders: string[] = [];
-
-  get loader() {
-    return this._loaders.length > 0;
-  }
-
+  loaders = signal<string[]>([]);
+  
   show(value: string) {
-    this._loaders.push(value);
+    this.loaders.set([...this.loaders(), value]);
   }
 
   hide(value: string) {
-    this._loaders = this._loaders.filter((loader) => loader !== value);
+    this.loaders.set(this.loaders().filter((loader) => loader !== value));
   }
 }

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class LoaderComponent {
   constructor(private loaderService: LoaderService) {}
 
-  get loader() {
-    return this.loaderService.loader;
+  get loaders() {
+    return this.loaderService.loaders;
   }
 }

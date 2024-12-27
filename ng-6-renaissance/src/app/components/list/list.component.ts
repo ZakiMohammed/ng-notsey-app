@@ -5,11 +5,12 @@ import { LoaderService } from '../../services/loader.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ItemComponent } from '../item/item.component';
 import { CommonModule } from '@angular/common';
+import { ReversePipe } from '../../pipes/reverse.pipe';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, ItemComponent],
+  imports: [CommonModule, ItemComponent, ReversePipe],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
