@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NoteService } from '../../services/note.service';
 
 @Component({
-  selector: 'app-empty',
-  templateUrl: './empty.component.html',
-  styleUrl: './empty.component.scss'
+    selector: 'app-empty',
+    templateUrl: './empty.component.html',
+    styleUrl: './empty.component.scss',
+    standalone: false
 })
 export class EmptyComponent {
   constructor(private noteService: NoteService) {}

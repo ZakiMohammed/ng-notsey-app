@@ -3,9 +3,10 @@ import { Note } from '../../models/note.model';
 import { NoteService } from '../../services/note.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.scss',
+    standalone: false
 })
 export class ListComponent {
   constructor(private noteService: NoteService) {}
