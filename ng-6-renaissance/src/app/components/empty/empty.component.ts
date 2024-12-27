@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class EmptyComponent {
   constructor(private noteService: NoteService) {}
 
-  get notes() {
-    return this.noteService.notes;
+  get notes$() {
+    return this.noteService.notes$;
   }
 }

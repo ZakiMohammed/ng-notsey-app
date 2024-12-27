@@ -4,17 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LoaderService {
-  private _loader = false;
+  private _loaders: string[] = [];
 
   get loader() {
-    return this._loader;
+    return this._loaders.length > 0;
   }
 
-  show() {
-    this._loader = true;
+  show(value: string) {
+    this._loaders.push(value);
   }
 
-  hide() {
-    this._loader = false;
+  hide(value: string) {
+    this._loaders = this._loaders.filter((loader) => loader !== value);
   }
 }
