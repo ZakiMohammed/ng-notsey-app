@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { ReversePipe } from '../../pipes/reverse.pipe';
 
 @Component({
-  selector: 'app-list',
-  standalone: true,
-  imports: [CommonModule, ItemComponent, ReversePipe],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+    selector: 'app-list',
+    imports: [CommonModule, ItemComponent, ReversePipe],
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();

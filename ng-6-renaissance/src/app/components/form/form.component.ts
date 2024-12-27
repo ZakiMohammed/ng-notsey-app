@@ -6,11 +6,10 @@ import { finalize, Subject, takeUntil } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-form',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+    selector: 'app-form',
+    imports: [FormsModule],
+    templateUrl: './form.component.html',
+    styleUrl: './form.component.scss'
 })
 export class FormComponent implements OnDestroy {
   content: string = '';
