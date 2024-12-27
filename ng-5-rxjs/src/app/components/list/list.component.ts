@@ -4,9 +4,10 @@ import { NoteService } from '../../services/note.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.scss',
+    standalone: false
 })
 export class ListComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();

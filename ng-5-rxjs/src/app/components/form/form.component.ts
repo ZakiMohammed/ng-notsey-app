@@ -5,9 +5,10 @@ import { v4 as uuid } from 'uuid';
 import { finalize, Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+    selector: 'app-form',
+    templateUrl: './form.component.html',
+    styleUrl: './form.component.scss',
+    standalone: false
 })
 export class FormComponent implements OnDestroy {
   content: string = '';
