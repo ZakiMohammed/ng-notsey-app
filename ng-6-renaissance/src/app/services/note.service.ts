@@ -1,14 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Note } from '../models/note.model';
 import { LoaderService } from './loader.service';
-import {
-  BehaviorSubject,
-  catchError,
-  finalize,
-  Observable,
-  of,
-  tap,
-} from 'rxjs';
+import { catchError, finalize, Observable, of, tap } from 'rxjs';
 import { LoaderConstant } from '../constants/loader.constant';
 import { NoteApiService } from '../http/note-api.service';
 
@@ -16,7 +9,7 @@ import { NoteApiService } from '../http/note-api.service';
   providedIn: 'root',
 })
 export class NoteService {
-  notes$ = new BehaviorSubject<Note[]>([]);
+  notes$ = signal<Note[]>([]);
 
   constructor(
     private loaderService: LoaderService,
@@ -26,7 +19,7 @@ export class NoteService {
   getNotes(): Observable<Note[]> {
     this.loaderService.show(LoaderConstant.GET_NOTES);
     return this.noteApiService.getNotes().pipe(
-      tap((notes) => this.notes$.next(notes)),
+      tap((notes) => this.notes$.set(notes)),
       catchError(this.handleError),
       finalize(() => this.loaderService.hide(LoaderConstant.GET_NOTES))
     );
@@ -35,7 +28,7 @@ export class NoteService {
   addNote(note: Note): Observable<Note> {
     this.loaderService.show(LoaderConstant.ADD_NOTE);
     return this.noteApiService.addNote(note).pipe(
-      tap((newNote) => this.notes$.next([...this.notes$.value, newNote])),
+      tap((newNote) => this.notes$.set([...this.notes$(), newNote])),
       catchError(this.handleError),
       finalize(() => this.loaderService.hide(LoaderConstant.ADD_NOTE))
     );
@@ -45,7 +38,7 @@ export class NoteService {
     this.loaderService.show(LoaderConstant.DELETE_NOTE);
     return this.noteApiService.deleteNoteById(id).pipe(
       tap(() =>
-        this.notes$.next(this.notes$.value.filter((note) => note.id !== id))
+        this.notes$.set(this.notes$().filter((note) => note.id !== id))
       ),
       catchError(this.handleError),
       finalize(() => this.loaderService.hide(LoaderConstant.DELETE_NOTE))
