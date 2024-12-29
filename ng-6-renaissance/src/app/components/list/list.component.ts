@@ -3,12 +3,13 @@ import { Note } from '../../models/note.model';
 import { NoteService } from '../../services/note.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ItemComponent } from '../item/item.component';
+import { EmptyComponent } from '../empty/empty.component';
 import { CommonModule } from '@angular/common';
 import { ReversePipe } from '../../pipes/reverse.pipe';
 
 @Component({
     selector: 'app-list',
-    imports: [CommonModule, ItemComponent, ReversePipe],
+    imports: [CommonModule, ItemComponent, EmptyComponent, ReversePipe],
     templateUrl: './list.component.html',
     styleUrl: './list.component.scss'
 })

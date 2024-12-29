@@ -1,12 +1,7 @@
-@if (notes$ | async; as notes) { 
+@if (notes$(); as notes) { 
   @for (note of notes | reverse; track note.id) {
     <app-item [note]="note" (onRemove)="onRemove($event)"></app-item>
   } @empty {
-    <div class="text-center p-3 text-muted">
-      <h1 class="display-4 text-secondary">
-        <i class="bi bi-egg me-2"></i>
-      </h1>
-      No notes found
-    </div>
+    <app-empty></app-empty>
   }
 }
